@@ -1,6 +1,6 @@
 # Basic
 title: MayerF
-subtitle: welcome to mayerf's blog
+#subtitle: welcome to mayerf's blog
 #welcome_message: <a href="https://github.com/onevcat/vno-jekyll" target="_blank">Download the theme</a>
 #description: Vno Jekyll is a port of my Ghost theme vno.
 #creator: <a href="http://onev.cat">@onevcat</a>
@@ -22,7 +22,7 @@ blog_button:
 
 # Navigation buttons in the front page.
 nav:
-    - {title: Projects, description: My Projects, url: 'http://project.onevcat.com'}
+    #- {title: Projects, description: My Projects, url: 'http://project.onevcat.com'}
     # - {title: Another Button, description: A button, url: 'http://example.com'}
 
 # Pagination
@@ -39,8 +39,8 @@ comment:
 social:
     weibo: MayerF
     github: mayerfan
-    twitter: 
-    #gplus: 107108267983477358170
+    twitter: 12
+    gplus: 107108267983477358170
     mail: mayerfzll@gmail.com
 
 # Google Analytics
