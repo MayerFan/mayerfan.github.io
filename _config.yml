@@ -5,7 +5,7 @@ subtitle: welcome to mayerf's blog
 #description: Vno Jekyll is a port of my Ghost theme vno.
 #creator: <a href="http://onev.cat">@onevcat</a>
 
-#url: "http://vno.onevcat.com"
+url: "https://mayerfan.github.io"
 
 permalink: /:year/:month/:title/
 
