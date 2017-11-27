@@ -342,7 +342,11 @@ MYCustomObj.m:
 	}
 	
 	@end
+	
 	```
+	图示效果无变化：
+	![效果无变化](https://github.com/MayerFan/AllDemos/blob/master/Demos/UIAppearance_Demo/Images/appearance_02.png)
+	
 	动态添加一个新的switch实例:
 	
 	```
@@ -352,6 +356,8 @@ MYCustomObj.m:
 		[self.view addSubview:switch3];// 新添加的switch变化
 	}
 	```
+	图示效果：
+	![外观变化](https://github.com/MayerFan/AllDemos/blob/master/Demos/UIAppearance_Demo/Images/appearance_03.png)
 	
 	**可见：切换主题后，要想立即更新当前页面外观，需要重新开启新的生命周期（可以remvoeView后再addSubviews）**
 
@@ -374,7 +380,7 @@ MYCustomObj.m:
  
 
 
-[Demo地址]()
+[Demo地址](https://github.com/MayerFan/AllDemos)
 ---
 参考资料：
 
