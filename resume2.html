@@ -606,7 +606,7 @@ content:"...";
 <p>• 接口化、功能化、模块化抽离封装</p>
 <p>• 代码健壮性、稳定性、性能优化、内存管理、缓存使用等软技术考虑</p>
 <p>• 分层框架设计：业务逻辑层、视图层、数据层和网络层</p>
-<p>• 基于MVP设计自用框架模式。自定义模块简述自用设计模式的考量</p>
+<p>• 基于MVVM设计自用框架模式。自定义模块简述自用设计模式的考量</p>
 								</div>
 								</div>
 								<div class="mr_jobe_list">
@@ -1004,12 +1004,12 @@ content:"...";
 									<ul>
  <li><p>酷爱编程。喜欢专研。花费了好几天的时间查找文档，代码调试来探究CSS内联元素的布局规则（浏览器渲染的时候究竟是如何物理定位？可不是display三种属性的区别）</p></li>
  <li><p>C语言利用Socket实现http协议和多客户端与服务端长连接的多线程处理</p></li>
- <li><p>基于node开发过一个简易的电影网站</p></li>
- <li><p>对iOS runtime、runloop、网络、多线程、内存管理、性能优化有深刻理解<br /></p></li>
+ <li><p>基于node开发过一个简易的电影网站<br /></p></li>
  <li><p>喜欢阅读经典的第三方开源框架（尤其是项目中用到的框架）。SVProgressHUD、FLAnimatedImage、SDWebimage、AFNetworking等</p></li>
  <li><p>喜欢阅读官方开发文档。URLSession Programming Guide、Threading Programming Guide、Objective-C Runtime Programming Guide等苹果官方文档；NodeJS官方文档、Express官方文档、Jade官方文档等</p></li>
  <li><p>喜欢逛GitHub、Segmentfault、CSDN和infoQ等知识分享平台。碰上疑难杂症Stack Overflow更是一个求医问药的好去处</p></li>
- <li><p>具有较强的分析问题和解决问题能力</p></li>
+ <li><p>时刻注重代码质量和性能优化：编码之前反复思量合理的代码布局。编码之中时刻考虑着每个对象的生命周期，什么时候持有，什么时候释放。在体验最优的情况下怎么尽量减少内存的开销</p></li>
+ <li><p>bug定位能力。经验+业务分析+源码+调试<br /></p></li>
  <li><p>性格活泼开朗、逻辑推理超强，善于沟通。最重要的是能担当、有责任(个人所最看重☺️)。身为一个处女座的自已，代码凌乱、臃肿是不能忍受的</p></li>
  <li><p>良好的代码习惯。接口命名、关键注释、代码容错、接口的单一和开闭原则</p></li>
  <li><p>熟悉node、js语言和sqlite、mysql和mongodb数据库</p></li>
@@ -1111,26 +1111,25 @@ content:"...";
 									<div class="mr_title">
 										<span class="mr_line_tl" id="width604"></span>
 										<div class="cust_title">
-											<span>基于MVP设计自用框架</span>
+											<span>基于MVVM设计自用框架</span>
 										</div>
 									</div>
 								</div>
 							</div>
 							<div class="mr_moudle_content olpf">
-								<p>自用框架模式解决问题：</p>
+								<p>自用框架模式解决问题：（篇幅有限+比较抽象）</p>
 <p>&nbsp;&nbsp;&nbsp;&nbsp;1.&nbsp;MVC模式，C负担过重？</p>
 <p>&nbsp;&nbsp;&nbsp;&nbsp;2.&nbsp;每个控制器内的层层视图回调处理？(比如最内层的视图button层层回调到Controller发起push导航)</p>
 <p>&nbsp;&nbsp;&nbsp;&nbsp;3.&nbsp;controller把最新数据层层传递给最内层的view？（又是层层）</p>
-<p>&nbsp;&nbsp;&nbsp;&nbsp;4.&nbsp;MVP释放了C的负担，但是仍然没有完全解决数据的层层传递和事件响应的层层回调？</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;4.&nbsp;MVVM解决了C的负担，解决了部分数据层层传递的问题。但是仍然没有完全解决数据的层层传递和事件响应的层层回调？</p>
 <p>&nbsp;&nbsp;&nbsp;&nbsp;5.&nbsp;针对controller，怎样在使用中不关注具体的controller类型，而只考虑controller的push、present和传参呢？</p>
 <p>解决思路：</p>
 <p>&nbsp;&nbsp;&nbsp;&nbsp;* 针对于2、3、4这三个层层问题。可能有人推荐使用通知模式处理。但项目过大，对于通知这种太过松散的特性，不利用后续维护。<br /></p>
-<p>&nbsp;&nbsp;&nbsp;&nbsp;* 由web Router启发：（路由路径都是提前注入，之后输入哪个地址跳转至哪个页面）是不是也可以创建一个容器，在容器中提前注入各种业务action，事件响应的时候，只需要取出key对应的action执行即可。</p>
-<p>&nbsp;&nbsp;&nbsp;&nbsp;思路1. 创建一个管理类A抽象类。每个视图控制器都绑定一个抽象类的具体类实例。由这个具体类实例肩负起当前控制器中的所有业务。<br /></p>
-<p>&nbsp;&nbsp;&nbsp;&nbsp;思路2：控制器load的时候提前向绑定的管理类实例注入业务operation<br /></p>
-<p>&nbsp;&nbsp;&nbsp;&nbsp;思路3：controller容器中的每个视图都需要weak引用管理类实例。对于swift而言，因为类对象可以添加属性。因此更加简单实现。<br /></p>
-<p>&nbsp; &nbsp; 思路3：每个控制器中所管理的业务逻辑高度集中，便于定位、维护和专注业务处理。controller只负责自己的生命周期、view只负责显示。</p>
-<p>针对第5个问题，仍然是利用注入思想。具体参考HHRouter</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;* 由web Router启发：（路由路径都是提前注入，之后输入哪个地址跳转至哪个页面）是不是也可以创建一个容器，在容器中提前注入各种业务action，只需要在执行的时候，取出key对应的action。</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;* 通信结构：逻辑管理类和View双向通讯，和model双向通讯，和controller双向通讯。<br /></p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;思路1. 创建单例逻辑管理类A。controller提前注入后续的业务逻辑block，管理类A持有这些block。之后的具体的业务需求只需要从A中取出对应block执行即可。但是问题1：C一样业务过多。问题2：内存泄漏<br /></p>
+<p>思路2：创建管理类A非单例。每个控制器绑定一个管理类实例，解决内存泄漏问题<br /></p>
+<p>思路3：每个控制器中绑定的管理类实例负责当前控制器的所有业务逻辑，这样每个控制器中所有业务逻辑高度集中便于定位、维护和专注业务处理。controller只负责自己的生命周期、view只负责显示。</p>
 							</div>
 						</div>
 					</div>
